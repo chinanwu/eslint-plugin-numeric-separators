@@ -1,0 +1,25 @@
+{
+  "name": "eslint-plugin-format-number",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Chin-An Wu",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/eslint-parser": "^7.12.1",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.13.0",
+    "mocha": "^8.2.1"
+  },
+  "peerDependencies": {
+    "eslint": "^7"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin"
+  ]
+}
