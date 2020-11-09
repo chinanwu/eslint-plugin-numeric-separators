@@ -12,7 +12,7 @@ module.exports = {
 		fixable: 'code',
 		schema: [], // No options
 		messages: {
-			useSeparator: "Long numbers should be formatted with _: '{{ num }}'",
+			useSeparator: "Long numbers should be formatted with _: '{{ raw }}'",
 		},
 	},
 	create: (context) => ({
@@ -29,12 +29,25 @@ module.exports = {
 				node,
 				messageId: 'useSeparator',
 				data: {
-					num: raw,
+					raw,
 				},
-				// fix: function(fixer) {
-				// 	return fixer.insertTextAfter(node, ";");
-				// }
+				fix: (fixer) => {
+					const arr = raw.split( /(?=(?:...)*$)/ );
+					let fixed = "";
+					for (const item of arr) {
+						if (fixed === "") {
+							fixed += item;
+						} else {
+							fixed += "_" + item;
+						}
+					}
+
+					// return fixer.replaceTextRange(node.range, fixed);
+					return fixer.replaceText(node, fixed);
+				}
 			});
 		},
 	}),
 };
+
+// https://stackoverflow.com/questions/14751802/split-string-every-3-characters-from-back-using-javascript

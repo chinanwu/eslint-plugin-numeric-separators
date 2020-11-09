@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-format-number",
+  "name": "eslint-plugin-numeric-separators",
   "version": "0.0.1",
   "main": "index.js",
   "author": "Chin-An Wu",
@@ -20,6 +20,8 @@
   "keywords": [
     "eslint",
     "eslint-plugin",
-    "eslintplugin"
+    "eslintplugin",
+    "numeric-separators",
+    "numericseparators"
   ]
 }

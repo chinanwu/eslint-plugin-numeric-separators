@@ -34,22 +34,29 @@ ruleTester.run('format-long-numbers', rule, {
 	invalid: [
 		{
 			code: 'var foo = 1000;',
-			errors: [{ messageId: 'useSeparator', data: { num: '1000' } }],
+			errors: [{ messageId: 'useSeparator', data: { raw: '1000' } }],
+			output: "var foo = 1_000;",
+			parserOptions: { ecmaVersion: 2021 }
 		},
 		{
 			code: 'var foo = 1000000;',
-			errors: [{ messageId: 'useSeparator', data: { num: '1000000' } }],
+			errors: [{ messageId: 'useSeparator', data: { raw: '1000000' } }],
+			output: "var foo = 1_000_000;",
+			parserOptions: { ecmaVersion: 2021 }
+		},
+		{
+			code: 'console.log(1234567890);',
+			errors: [{ messageId: 'useSeparator', data: { raw: '1234567890' } }],
+			output: "console.log(1_234_567_890);",
+			parserOptions: { ecmaVersion: 2021 }
+		},
+		{
+			code: 'var foo = parseInt(123456789);',
+			errors: [{ messageId: 'useSeparator', data: { raw: '123456789' } }],
+			output: "var foo = parseInt(123_456_789);",
+			parserOptions: { ecmaVersion: 2021 }
 		},
 	],
 });
 
-// Research:
-// - https://eslint.org/docs/developer-guide/nodejs-api#ruletester
-
-// Example:
-// - Eslint
-//		- https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-magic-numbers.js
-//		- https://github.com/eslint/eslint/blob/master/lib/rules/no-magic-numbers.js
-// - A11y
-//		- https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/__tests__/src/rules/lang-test.js
-//		- https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/src/rules/lang.js
+// https://github.com/eslint/eslint/pull/13574/files
