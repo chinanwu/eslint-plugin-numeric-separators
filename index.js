@@ -2,7 +2,7 @@
 
 module.exports = {
 	rules: {
-		'format-long-numbers': require('./rules/format-long-numbers'),
+		'use-numeric-separators': require('./rules/use-numeric-separators'),
 	},
 };
 

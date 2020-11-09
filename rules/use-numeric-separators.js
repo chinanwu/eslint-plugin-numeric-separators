@@ -1,9 +1,5 @@
 'use strict';
 
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
-
 const regex = /([0-9]{0,3}_[0-9]{3})+/;
 
 module.exports = {
@@ -11,7 +7,7 @@ module.exports = {
 		type: 'suggestion',
 		docs: {
 			description: 'disallow long numbers without proper format',
-			docs: 'https://github.com/chinanwu/blog/eslint/README.md',
+			docs: 'https://github.com/chinanwu/eslint-plugin-long-numbers',
 		},
 		fixable: 'code',
 		schema: [], // No options

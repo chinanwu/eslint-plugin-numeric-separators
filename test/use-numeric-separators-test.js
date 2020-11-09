@@ -1,18 +1,9 @@
-// -----------------------------------------------------------------------------
-// Requirements
-// -----------------------------------------------------------------------------
-
-const rule = require('../rules/format-long-numbers');
+const rule = require('../rules/use-numeric-separators');
 const RuleTester = require('eslint').RuleTester;
-
-// -----------------------------------------------------------------------------
-// Tests
-// -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester();
 
 ruleTester.run('format-long-numbers', rule, {
-	// valid: ['const foo = 100', 'const foo = 1_000', 'const foo = 1_000_000'],
 	valid: [
 		{
 			code: 'var foo = 100;',
@@ -24,6 +15,18 @@ ruleTester.run('format-long-numbers', rule, {
 		},
 		{
 			code: 'var foo = 1_000_000;',
+			parserOptions: { ecmaVersion: 2021 }
+		},
+		{
+			code: 'var foo = parseInt(123_456_789);',
+			parserOptions: { ecmaVersion: 2021 }
+		},
+		{
+			code: 'console.log(9_876);',
+			parserOptions: { ecmaVersion: 2021 }
+		},
+		{
+			code: 'var foo = array[1_00];',
 			parserOptions: { ecmaVersion: 2021 }
 		},
 	],
