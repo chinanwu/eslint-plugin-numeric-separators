@@ -16,22 +16,25 @@ ruleTester.run('format-long-numbers', rule, {
 	valid: [
 		{
 			code: 'var foo = 100;',
+			parserOptions: { ecmaVersion: 2021 }
 		},
 		{
-			code: 'var foo = 1_000',
+			code: 'var foo = 1_000;',
+			parserOptions: { ecmaVersion: 2021 }
 		},
 		{
-			code: 'var foo = 1_000_000',
+			code: 'var foo = 1_000_000;',
+			parserOptions: { ecmaVersion: 2021 }
 		},
 	],
 
 	invalid: [
 		{
-			code: 'var foo = 1000',
+			code: 'var foo = 1000;',
 			errors: [{ messageId: 'useSeparator', data: { num: '1000' } }],
 		},
 		{
-			code: 'var foo = 1000000',
+			code: 'var foo = 1000000;',
 			errors: [{ messageId: 'useSeparator', data: { num: '1000000' } }],
 		},
 	],
