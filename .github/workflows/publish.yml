@@ -5,7 +5,7 @@ name: Publish
 
 on:
   release:
-    types: [created]
+    types: [ created ]
 
 jobs:
   lint:
@@ -23,11 +23,11 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
     steps:
-      - name: Run role tester
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: Run role tester
       - run: |
           npm i
           npm test
@@ -36,12 +36,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Publish to NPM
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+      - name: Publish to NPM
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -50,12 +50,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Publish to GPR
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
+      - name: Publish to GPR
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
