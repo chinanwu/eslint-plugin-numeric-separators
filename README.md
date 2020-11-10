@@ -3,7 +3,23 @@
 'Long numbers' are numbers that have a length longer than 3. 
 
 ## Installation
-- Coming soon
+- Install the plugin: `npm i -D eslint-plugin-numeric-separators`
+- Add the plugin and rule to your eslint config file
+```js
+// JS
+module.exports = {
+  // ...
+  plugins: [
+    //...,
+    'numeric-separators'
+  ],
+  rules: {
+    // ...,
+    'numeric-separators/use-numeric-separators': 'error'
+  }
+  // ...
+}
+```
 
 ## Rule Details
 
@@ -25,14 +41,12 @@ Examples of **correct** code for this rule:
 const number = 1_000;
 ```
 
-## TODOs
-- Github Actions To Publish
-
 ## Resources I've Used
 - [ESLint's official developer guide to making rules](https://eslint.org/docs/developer-guide/working-with-rules)
     - [ESLint's Rule Tester](https://eslint.org/docs/developer-guide/nodejs-api#ruletester)
 - ["Ensure code quality; create your own ESLint rules"](https://blog.theodo.com/2020/04/create-your-own-eslint-rules/)
 - ["How I built my first custom ESLint rule"](https://blog.maximeheckel.com/posts/how-to-build-first-eslint-rule)
+- ["Custom ESLint Rules For Faster Refactoring"](https://medium.com/neighborhoods-com-engineering-blog/custom-eslint-rules-for-faster-refactoring-2095e69bde08)
 - [AST Explorer](https://astexplorer.net/)
 - Fantastic existing examples:
     - ESLint's `no-magic-numbers` rule
